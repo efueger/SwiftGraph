@@ -1,6 +1,6 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=85ed34006e87b97e4f0400748d7f654ba2684a2aa62dceed5c9935930ad5fafa
+    - CC_TEST_REPORTER_ID=dbe80432054c18b4c8be23293f43a00852602852ebea99d6907eb3c3cbca2c69
 
 matrix:
   include:
