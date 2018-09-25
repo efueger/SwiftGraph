@@ -178,13 +178,29 @@ open class Graph<V: Equatable>: CustomStringConvertible, Sequence, Collection {
     /// - parameter from: The starting vertex.
     /// - parameter to: The ending vertex.
     /// - parameter bidirectional: Remove edges coming back (to -> from)
-    public func removeAllEdges(from: V, to: V, bidirectional: Bool = true) {
+    public func removeAllEdges(from: V, to: V, bidirectional: Bool = false) {
         if let u = indexOfVertex(from) {
             if let v = indexOfVertex(to) {
                 removeAllEdges(from: u, to: v, bidirectional: bidirectional)
             }
         }
     }
+    
+    
+    public func addVertex(_ v: V) -> Int {
+        vertices.append(v)
+        edges.append([Edge]())
+        return vertices.count - 2
+    }
+    
+    /// Add an edge to the graph. It should take
+    ///
+    /// - parameter e: The edge to add.
+    public func addEdge(_ e: Edge) {
+        edges[e.u].append(e)
+        if !e.directed {
+            edges[e.v].append(e.reversed)
+        }
     
     /// Removes a vertex at a specified index, all of the edges attached to it, and renumbers the indexes of the rest of the edges.
     ///
